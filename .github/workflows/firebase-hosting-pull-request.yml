@@ -33,4 +33,4 @@ jobs:
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' #TODO: add this secret
-          projectId: '${{ secrets.FIREBASE_PROJECT_ID }}' #TODO: add this secret
+          projectId: pulsetrack-21923 #TODO: add this secret
