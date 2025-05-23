@@ -1,0 +1,13 @@
+{
+	"hosting": {
+		"public": "public",
+		"site": "pulsetrack-21923",
+		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+		"rewrites": [
+			{
+				"source": "**",
+				"function": "nextjsFunc"
+			}
+		]
+	}
+}
