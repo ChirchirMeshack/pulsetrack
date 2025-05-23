@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app"
-import { getMessaging, getToken, onMessage } from "firebase/messaging"
+import {
+  getMessaging,
+  getToken,
+  onMessage,
+  Messaging,
+  MessagePayload,
+} from "firebase/messaging"
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -14,7 +20,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 
 // Initialize Firebase Cloud Messaging and get a reference to the service
-let messaging: any = null
+let messaging: Messaging | null = null // Use Messaging type from firebase/messaging
 
 // We need to check if we're in the browser before initializing messaging
 if (typeof window !== "undefined") {
@@ -47,7 +53,7 @@ export async function requestNotificationPermission() {
 export function onMessageListener() {
   if (!messaging) return () => {}
 
-  return onMessage(messaging, (payload: any) => {
+  return onMessage(messaging, (payload: MessagePayload) => {
     console.log("Message received:", payload)
     // You can handle the message here or pass it to a callback
     return payload
