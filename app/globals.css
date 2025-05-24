@@ -1,21 +1,146 @@
+/* 
+  Tailwind CSS Directives
+  These directives inject Tailwind's base, components, and utilities styles
+  into the application.
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 
+  Base Color Variables
+  These RGB variables define the basic color scheme for the application.
+  They are used for the default light theme.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 0, 0, 0;          /* Black text for light mode */
+  --background-start-rgb: 255, 255, 255;  /* White background start */
+  --background-end-rgb: 240, 253, 244;    /* Light green background end */
 }
 
+/* 
+  Dark Mode Color Variables
+  These variables override the base colors when the user's system
+  is set to dark mode.
+*/
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 255, 255, 255;      /* White text for dark mode */
+    --background-start-rgb: 17, 24, 39;   /* Dark gray background start */
+    --background-end-rgb: 31, 41, 55;     /* Slightly lighter gray background end */
   }
 }
 
+/* 
+  Base Body Styles
+  Applies the foreground color to all text in the body.
+*/
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+}
+
+/* 
+  Theme System Configuration
+  This layer defines the complete theme system using CSS variables.
+  All colors are defined in HSL format for better color manipulation.
+*/
+@layer base {
+  /* Light Theme Variables */
+  :root {
+    /* Base Colors */
+    --background: 0 0% 100%;              /* Pure white background */
+    --foreground: 222.2 84% 4.9%;         /* Dark text color */
+    
+    /* Card Colors */
+    --card: 0 0% 100%;                    /* White card background */
+    --card-foreground: 222.2 84% 4.9%;    /* Dark card text */
+    
+    /* Popover Colors */
+    --popover: 0 0% 100%;                 /* White popover background */
+    --popover-foreground: 222.2 84% 4.9%; /* Dark popover text */
+    
+    /* Primary Colors */
+    --primary: 142.1 76.2% 36.3%;         /* Green primary color */
+    --primary-foreground: 355.7 100% 97.3%; /* Light text on primary */
+    
+    /* Secondary Colors */
+    --secondary: 142.1 76.2% 96.3%;       /* Light green secondary */
+    --secondary-foreground: 142.1 76.2% 36.3%; /* Dark text on secondary */
+    
+    /* Muted Colors */
+    --muted: 210 40% 96.1%;               /* Light gray muted background */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Gray muted text */
+    
+    /* Accent Colors */
+    --accent: 142.1 76.2% 94%;            /* Light green accent */
+    --accent-foreground: 142.1 76.2% 36.3%; /* Dark text on accent */
+    
+    /* Destructive Colors */
+    --destructive: 0 84.2% 60.2%;         /* Red for destructive actions */
+    --destructive-foreground: 210 40% 98%; /* Light text on destructive */
+    
+    /* Border and Input Colors */
+    --border: 214.3 31.8% 91.4%;          /* Light gray border */
+    --input: 214.3 31.8% 91.4%;           /* Light gray input */
+    --ring: 142.1 76.2% 36.3%;            /* Green focus ring */
+    
+    /* Border Radius */
+    --radius: 0.5rem;                     /* Default border radius */
+  }
+
+  /* Dark Theme Variables */
+  .dark {
+    /* Base Colors */
+    --background: 222.2 84% 4.9%;         /* Dark background */
+    --foreground: 210 40% 98%;            /* Light text color */
+    
+    /* Card Colors */
+    --card: 222.2 84% 4.9%;               /* Dark card background */
+    --card-foreground: 210 40% 98%;       /* Light card text */
+    
+    /* Popover Colors */
+    --popover: 222.2 84% 4.9%;            /* Dark popover background */
+    --popover-foreground: 210 40% 98%;    /* Light popover text */
+    
+    /* Primary Colors */
+    --primary: 142.1 76.2% 36.3%;         /* Green primary color */
+    --primary-foreground: 355.7 100% 97.3%; /* Light text on primary */
+    
+    /* Secondary Colors */
+    --secondary: 217.2 32.6% 17.5%;       /* Dark gray secondary */
+    --secondary-foreground: 210 40% 98%;  /* Light text on secondary */
+    
+    /* Muted Colors */
+    --muted: 217.2 32.6% 17.5%;           /* Dark gray muted background */
+    --muted-foreground: 215 20.2% 65.1%;  /* Light gray muted text */
+    
+    /* Accent Colors */
+    --accent: 217.2 32.6% 17.5%;          /* Dark gray accent */
+    --accent-foreground: 210 40% 98%;     /* Light text on accent */
+    
+    /* Destructive Colors */
+    --destructive: 0 62.8% 30.6%;         /* Dark red for destructive */
+    --destructive-foreground: 210 40% 98%; /* Light text on destructive */
+    
+    /* Border and Input Colors */
+    --border: 217.2 32.6% 17.5%;          /* Dark gray border */
+    --input: 217.2 32.6% 17.5%;           /* Dark gray input */
+    --ring: 142.1 76.2% 36.3%;            /* Green focus ring */
+  }
+}
+
+/* 
+  Base Layer Styles
+  These styles apply to all elements in the application.
+  They set up the basic styling foundation.
+*/
+@layer base {
+  /* Apply border color to all elements */
+  * {
+    @apply border-border;
+  }
+  /* Set background and text colors for the body */
+  body {
+    @apply bg-background text-foreground;
+  }
 }
